@@ -12,9 +12,9 @@
             {% do flextype.emitter.emit('onLayoutMeta') %}
 
             <title>
-                {% if entry.title %}{{ entry.title|e('html') }}
-                    |
-                {% endif %}{{ registry().get('plugins.site.settings.title')|e('html') }}</title>
+                {% if entry.title %}{{ entry.title|e('html') }} | {% endif %}
+                {{ registry().get('plugins.site.settings.title')|e('html') }}
+            </title>
 
             {# For development only #}
             <script src="https://cdn.tailwindcss.com"></script>
@@ -23,23 +23,13 @@
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
             <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;400;600;800&display=swap" rel="stylesheet">
         
-            {% do registry().set('assets.site.css.simple-blog', 'project/assets/src/css/styles.css') %}
+            {% do registry().set('assets.site.css.styles', const(PROJECT_NAME) ~ '/assets/src/css/styles.css') %}
 
             {% if registry().has('assets.site.css') %}
                 {% for css in registry().get('assets.site.css') %}
                     <link href="{{ getBaseUrl() }}/{{ css }}" rel="stylesheet">
                 {% endfor %}
             {% endif %}
-
-            <style>
-                body {
-                    font-family: 'Source Code Pro', monospace!important;
-                }
-
-                p {
-                    margin-bottom: 20px!important;
-                }
-            </style>
 
             {% do emitter().emit('onLayoutHeader') %}
         {% endblock %}
