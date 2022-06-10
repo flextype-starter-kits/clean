@@ -1,0 +1,19 @@
+name: Sitemap
+version: 3.0.0
+description: Provide automatically generated XML sitemap.
+author:
+  name: Sergey Romanenko
+  email: awilum@msn.com
+  url: https://awilum.github.io/flextype
+homepage: https://github.com/flextype-plugins/sitemap
+documentation: https://github.com/flextype-plugins/sitemap
+changelog: https://github.com/flextype-plugins/sitemap/blob/master/CHANGELOG.md
+bugs: https://github.com/flextype-plugins/sitemap/issues
+icon:
+  name: map
+  set: bootstrap
+license: MIT
+
+dependencies:
+  flextype: "^1.0.0-alpha.1"
+  twig: "^3.0.0"

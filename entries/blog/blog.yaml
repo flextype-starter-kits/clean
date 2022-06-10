@@ -1,0 +1,7 @@
+title: "Blog (field:id)"
+template: blog
+menu:
+  title: Blog
+  url: "(field:id)"
+  target: "_self"
+  order: 1

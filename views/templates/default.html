@@ -1,0 +1,5 @@
+{% extends 'views/layouts/base.html' %}
+
+{% block content %}
+    {{ entry.content|markdown|raw }}
+{% endblock %}

@@ -1,0 +1,35 @@
+{
+    "name": "flextype-plugins/twig",
+    "type": "project",
+    "description": "Twig plugin to present Twig template engine for Flextype.",
+    "keywords": ["twig", "plugin", "flextype", "php", "html"],
+    "homepage": "https://github.com/flextype-plugins/twig",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sergey Romanenko",
+            "email": "awilum@msn.com",
+            "homepage": "https://awilum.github.io/flextype"
+        }
+    ],
+    "support": {
+      "issues": "https://github.com/flextype-plugins/twig/issues"
+    },
+    "require": {
+        "php": "^7.4 || ^8.0",
+        "twig/twig": "^3.4.1",
+        "slim/flash": "~0.4.0"
+    },
+    "config": {
+        "apcu-autoloader": true,
+        "optimize-autoloader": true
+    },
+    "autoload": {
+        "classmap": [
+            "src/twig"
+        ],
+        "files": [
+            "src/twig/helpers/helpers.php"
+        ]
+    }
+}
