@@ -3,6 +3,7 @@
 composer.lock
 .phpunit.result.cache
 node_modules
+package-lock.json
 
 # OS Generated
 .DS_Store*
