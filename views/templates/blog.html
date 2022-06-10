@@ -1,6 +1,7 @@
 {% extends 'views/layouts/base.html' %}
 
 {% block content %}
+    {# Get blog collection #}
     {% set blogCollectionCacheID = strings('blog-collection-' ~ 'blog').hash().toString() %}
     {% if cache().has(blogCollectionCacheID) %}
         {% set blog = cache().get(blogCollectionCacheID) %}
@@ -9,6 +10,7 @@
         {% do cache().set(blogCollectionCacheID, blog) %}
     {% endif %}
 
+    {# Display blog posts #}
     {% for post in blog %}
         <a href="{{ post.id }}" class="text-4xl border-b-black border-b-2 flex items-center py-4 hover:text-pink-500">
             <div>{{ post.title }}</div>

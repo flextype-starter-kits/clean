@@ -9,28 +9,27 @@
             <meta name="robots" content="{% if entry.robots %}{{ entry.robots }}{% else %}{{ registry().get('plugins.site.settings.robots') }}{% endif %}">
             <meta name="generator" content="Powered by Flextype"/>
 
-            {% do
-                flextype.emitter.emit('onThemeMeta') %}
+            {% do flextype.emitter.emit('onLayoutMeta') %}
 
             <title>
                 {% if entry.title %}{{ entry.title|e('html') }}
                     |
                 {% endif %}{{ registry().get('plugins.site.settings.title')|e('html') }}</title>
 
+            {# For development only #}
             <script src="https://cdn.tailwindcss.com"></script>
 
-            {% set theme = registry().get('plugins.site.settings.theme') %}
-            {% do registry().set('assets.site.css.bootstrap-blog', 'project/themes/' ~ theme ~ '/assets/src/css/styles.css') %}
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;400;600;800&display=swap" rel="stylesheet">
+        
+            {% do registry().set('assets.site.css.simple-blog', 'project/assets/src/css/styles.css') %}
 
             {% if registry().has('assets.site.css') %}
                 {% for css in registry().get('assets.site.css') %}
                     <link href="{{ getBaseUrl() }}/{{ css }}" rel="stylesheet">
                 {% endfor %}
             {% endif %}
-
-            <link rel="preconnect" href="https://fonts.googleapis.com">
-            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-            <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;400;600;800&display=swap" rel="stylesheet">
 
             <style>
                 body {
@@ -85,6 +84,6 @@
             {% endfor %}
         {% endif %}
 
-        {% do flextype.emitter.emit('onThemeTail') %}
+        {% do flextype.emitter.emit('onLayoutTail') %}
     </body>
 </html>
