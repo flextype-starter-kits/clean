@@ -11,9 +11,10 @@
 Clean is a minimalist Starter Kit for a blog or personal site.
 
 ## Features
-* Markdown focused writing experience
-* Beautifully responsive
-* Built with TailwindCSS
+* Installed and preconfigured site, sitemap and twig plugins.
+* Markdown focused writing experience.
+* Beautifully responsive.
+* Built with TailwindCSS.
 
 ## Dependencies
 
