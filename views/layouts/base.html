@@ -23,7 +23,7 @@
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
             <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;400;600;800&display=swap" rel="stylesheet">
         
-            {% do registry().set('assets.site.css.styles', const(PROJECT_NAME) ~ '/assets/src/css/styles.css') %}
+            {% do registry().set('assets.site.css.styles', const('PROJECT_NAME') ~ '/assets/src/css/styles.css') %}
 
             {% if registry().has('assets.site.css') %}
                 {% for css in registry().get('assets.site.css') %}

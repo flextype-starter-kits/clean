@@ -89,7 +89,7 @@ class SitemapController
             [
                 'sitemap' => registry()->get('plugins.sitemap.items')
             ]);
-       
+           
         $response->getBody()->write($renderedTemplate);
         $response = $response->withStatus(200);
         return $response;

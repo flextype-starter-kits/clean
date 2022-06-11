@@ -66,7 +66,7 @@ class SiteController
 
         // Set template path for current entry
         $template = isset($entry['template']) ? $entry['template'] : registry()->get('plugins.site.settings.templates.default');
-
+                
         // Check template file
         if (! file_exists(PATH_PROJECT . '/' . registry()->get('plugins.site.settings.templates.directory') . '/' . $template . '.' . registry()->get('plugins.site.settings.templates.extension'))) {
             $response->getBody()->write("Template {$template} not found");
