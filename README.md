@@ -23,8 +23,10 @@ The following dependencies need to be downloaded and installed for Clean Starter
 1. Download & Install all required dependencies.
 2. Create new folder `project`
 3. Download Clean Starter Kit and unzip plugin content to the folder `project`
-4. Go to `project` folder in your console and run `npm install` _(optional)_
-5. Run `npx tailwindcss -i ./assets/src/css/styles.css -o ./assets/dist/css/styles.css --watch` to rebuild styles. _(optional)_
+
+## Rebuild Styles
+1. Go to `project` folder in your console and run `npm install` to install node dependencies.
+2. Run `npx tailwindcss -i ./assets/src/css/styles.css -o ./assets/dist/css/styles.css --watch` to rebuild styles.
 
 ## License
 [The MIT License (MIT)](https://github.com/flextype-plugins/site/blob/master/LICENSE.txt)
