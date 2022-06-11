@@ -23,8 +23,8 @@ base_url: ''
 
 # Application Base Path
 #
-# Define application base path if application located in subdirectory
-base_path: '/projects/flextype/starter-kits'
+# Define application base path (without trailing slash) if application located in subdirectory
+base_path: ''
 
 # Valid date format
 #
