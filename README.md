@@ -1,6 +1,12 @@
-<h1 align="center">Clean Starter Kit for <a href="https://flextype.org/">Flextype</a></h1>
+<h1 align="center">Clean Starter Kit for <a href="https://awilum.github.io/flextype">Flextype</a></h1>
 
 ![preview](preview.png)
+
+<p align="center">
+<a href="https://github.com/flextype-starter-kits/clean/releases"><img alt="Version" src="https://img.shields.io/github/release/flextype-starter-kits/clean.svg?label=version&color=black&style=for-the-badge"></a> <a href="https://github.com/flextype-starter-kits/clean"><img src="https://img.shields.io/badge/license-MIT-blue.svg?color=black&style=for-the-badge" alt="License"></a> <a href="https://github.com/flextype-starter-kits/clean"><img src="https://img.shields.io/github/downloads/flextype-starter-kits/clean/total.svg?color=black&style=for-the-badge" alt="Total downloads"></a> <a href="https://discord.gg/ewQkqgfBAc"><img src="https://img.shields.io/discord/423097982498635778.svg?logo=discord&color=black&label=Discord%20Chat&style=for-the-badge" alt="Discord"></a>
+</p>
+
+<br><br>
 
 Clean is a minimalist Starter Kit for a blog or personal site.
 
