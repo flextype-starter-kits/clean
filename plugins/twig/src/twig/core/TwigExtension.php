@@ -41,6 +41,7 @@ class TwigExtension extends AbstractExtension
             new TwigFunction('currentUrl', [TwigRuntimeExtension::class, 'getCurrentUrl']),
             new TwigFunction('getUri', [TwigRuntimeExtension::class, 'getUri']),
             new TwigFunction('getBaseUrl', [TwigRuntimeExtension::class, 'getBaseUrl']),
+            new TwigFunction('getBasePath', [TwigRuntimeExtension::class, 'getBasePath']),
             new TwigFunction('getAbsoluteUrl', [TwigRuntimeExtension::class, 'getAbsoluteUrl']),
         ];
     }
