@@ -455,7 +455,7 @@ router:
   
 # Set to true to enable the Flextype CLI Application
 cli: 
-  enabled: false
+  enabled: true
 
 # Set to true to enable the Flextype Application
 app: 
