@@ -34,6 +34,12 @@ The following dependencies need to be downloaded and installed for Clean Starter
 1. Go to `project` folder in your console and run `npm install` to install node dependencies.
 2. Run `npx tailwindcss -i ./assets/src/css/styles.css -o ./assets/dist/css/styles.css`
 
+## Update vendor (options)
+1. Go to flextype root folder in your console and run `composer update`
+2. Go to flextype `project/plugins/twig` folder in your console and run `composer update`
+3. Go to flextype `project/plugins/site` folder in your console and run `composer update`
+4. Go to flextype `project/plugins/sitemap` folder in your console and run `composer update`
+
 ## License
 [The MIT License (MIT)](https://github.com/flextype-starter-kits/clean/blob/master/LICENSE.txt)
 Copyright (c) [Sergey Romanenko](https://github.com/Awilum)
