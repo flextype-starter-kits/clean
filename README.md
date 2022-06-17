@@ -28,7 +28,7 @@ The following dependencies need to be downloaded and installed for Clean Starter
 
 1. Download & Install all required dependencies.
 2. Create new folder `project`
-3. Download Clean Starter Kit and unzip plugin content to the folder `project`
+3. Download [Clean Starter Kit](https://github.com/flextype-starter-kits/clean/releases) and unzip plugin content to the folder `project`
 
 ## Recompile the CSS (optional)
 1. Go to `project` folder in your console and run `npm install` to install node dependencies.
