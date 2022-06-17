@@ -30,7 +30,7 @@ templates:
 
 # Site static cache
 cache:
-  enabled: false
+  enabled: true
 
 # Trailing slash
 trailing_slash: false

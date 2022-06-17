@@ -313,7 +313,7 @@ entries:
 #
 # - drivers.files.cache_slams_timeout: This option defines the cache slams timeout in seconds.
 cache:
-  enabled: false
+  enabled: true
   driver: auto
   drivers:
     apcu: {}
