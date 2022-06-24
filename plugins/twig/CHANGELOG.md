@@ -3,7 +3,37 @@
 
 ### Features
 
-* **core** update code base for new Flextype 1.0.0-alpha.1 release.
+* **core** Updates code base for new Flextype 1.0.0-alpha.1 release.
+
+* **core** Added new Twig expression.
+
+* **core** Added new Twig shortcode.
+
+* **core** Added new Twig direcive.
+
+* **core** Added new Twig extensions:
+  - I18n
+  - Filesystem
+  - Csrf
+  - Constants
+  - Strings
+  - Collection
+  - Filters
+  - Functions
+  - Tests
+  - Emitter
+  - Actions
+  - Registry
+  - Entries
+  - Serializers
+  - Parsers
+  - Flash
+  - Slugify
+  - Cache
+  - Image
+  - Url
+
+* **core** Updated and removed unused code.
 
 <a name="2.1.0"></a>
 # [2.1.0](https://github.com/flextype-plugins/twig/compare/v2.0.0...v2.1.0) (2021-01-14)

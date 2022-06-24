@@ -3,7 +3,9 @@
 
 ### Features
 
-* **core** update code base for new Flextype 1.0.0-alpha.1 release.
+* **core** Update code base for new Flextype 1.0.0-alpha.1 release.
+
+* **core** Added ability to generate static sitemap.
 
 <a name="2.10.0"></a>
 # [2.10.0](https://github.com/flextype-plugins/sitemap/compare/v2.9.1...v2.10.0) (2021-01-14)
