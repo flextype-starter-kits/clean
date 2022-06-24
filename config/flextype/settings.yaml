@@ -18,12 +18,12 @@ locale: en_US
 
 # Application Base url
 #
-# Define application base url
+# Define application base url (without trailing slash)
 base_url: ''
 
 # Application Base Path
 #
-# Define application base path (without trailing slash) if application located in subdirectory
+# Define application base path (without trailing and without starting slash) if application located in subdirectory
 base_path: ''
 
 # Valid date format

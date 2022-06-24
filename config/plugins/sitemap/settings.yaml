@@ -20,3 +20,5 @@ default:
 
 # Date format
 date_format: Y-m-d
+
+sitemap_path: '_site'

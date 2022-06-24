@@ -4,12 +4,13 @@ declare(strict_types=1);
 
 namespace Flextype\Plugin\Sitemap;
 
+use Flextype\Plugin\Sitemap\Console\Commands\Sitemap\SitemapGenerateCommand;
 use function is_file;
 
 /**
  * Ensure vendor libraries exist
  */
-! is_file($siteAutoload = __DIR__ . '/vendor/autoload.php') and exit('Please run: <i>composer install</i> for sitemap plugin');
+! is_file($sitemapAutoload = __DIR__ . '/vendor/autoload.php') and exit('Please run: <i>composer install</i> for sitemap plugin');
 
 /**
  * Register The Auto Loader
@@ -20,7 +21,10 @@ use function is_file;
  * loading any of our classes later on. It feels nice to relax.
  * Register The Auto Loader
  */
-$siteLoader = require_once $siteAutoload;
+$sitemapLoader = require_once $sitemapAutoload;
+
+// Add sitemap generate console command
+console()->add(new SitemapGenerateCommand());
 
 // Load routes
 require_once __DIR__ . '/src/routes/web.php';

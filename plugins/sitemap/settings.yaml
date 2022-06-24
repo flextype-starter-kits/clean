@@ -20,3 +20,6 @@ default:
 
 # Date format
 date_format: Y-m-d
+
+# sitemap.xml path (without trailing and without starting slash)
+sitemap_path: ''

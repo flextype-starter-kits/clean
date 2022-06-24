@@ -36,13 +36,13 @@ use Twig\Extension\StringLoaderExtension;
  */
 $twigLoader = require_once $twigAutoload;
 
+// Add Twig console command.
 console()->add(new CacheClearTwigTemplatesCommand());
 
+// Set flash service.
 container()->set('flash', new Messages());
    
-/**
- * Add Twig service to Flextype container
- */
+// Add Twig service to Flextype container
 container()->set('twig', function () {
 
     // Create Twig View
@@ -68,7 +68,7 @@ container()->set('twig', function () {
         }
     }
 
-    // Return view
+    // Return Twig instance
     return $twig;
 });
 
@@ -80,6 +80,3 @@ entries()->initDirectives(registry()->get('plugins.twig.settings.entries.directi
 
 // Init Twig Expressions
 entries()->initExpressions(registry()->get('plugins.twig.settings.entries.expressions'));
-
-// Add Twig Middleware
-app()->add(TwigMiddleware::createFromContainer(app()));
