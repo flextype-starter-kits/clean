@@ -25,4 +25,4 @@ date_format: Y-m-d
 static:
 
   # sitemap.xml path (without trailing and without starting slash)
-  sitemap_path: ''
+  sitemap_path: '_site'

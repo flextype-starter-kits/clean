@@ -21,4 +21,8 @@ default:
 # Date format
 date_format: Y-m-d
 
-sitemap_path: '_site'
+# Settings for static sitemap generation
+static:
+
+  # sitemap.xml path (without trailing and without starting slash)
+  sitemap_path: '_site'
