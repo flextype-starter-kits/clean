@@ -1,0 +1,15 @@
+name: Clean
+version: 1.0.0
+description: Clean is a minimalist Starter Kit for a blog or personal site.
+author:
+  name: Sergey Romanenko
+  email: awilum@msn.com
+  url: https://awilum.github.io
+homepage: https://github.com/flextype-starter-kits/clean
+documentation: https://github.com/flextype-starter-kits/clean
+changelog: https://github.com/flextype-starter-kits/clean/blob/master/CHANGELOG.md
+bugs: https://github.com/flextype-starter-kits/clean/issues
+license: MIT
+
+dependencies:
+  flextype: "^1.0.0-alpha.1"
