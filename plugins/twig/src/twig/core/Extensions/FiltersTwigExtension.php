@@ -29,14 +29,20 @@ class FiltersTwigExtension extends AbstractExtension
     public function getFilters() : array
     {
         return [
-            new TwigFilter('shortcode', [$this, 'shortcode']),
+            new TwigFilter('shortcodes', [$this, 'shortcodes']),
+            new TwigFilter('textile', [$this, 'textile']),
             new TwigFilter('markdown', [$this, 'markdown']),
         ];
     }
 
-    public function shortcode($value): string
+    public function shortcodes($value): string
     {
         return !empty($value) ? parsers()->shortcodes()->process($value) : '';
+    }
+
+    public function textile($value): string
+    {
+        return !empty($value) ? parsers()->textile()->parse($value) : '';
     }
 
     public function markdown($value): string

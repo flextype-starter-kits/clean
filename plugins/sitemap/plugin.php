@@ -26,6 +26,6 @@ $sitemapLoader = require_once $sitemapAutoload;
 // Add sitemap generate console command
 console()->add(new SitemapGenerateCommand());
 
+
 // Load routes
 require_once __DIR__ . '/src/routes/web.php';
-

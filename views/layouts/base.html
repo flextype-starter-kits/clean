@@ -4,15 +4,15 @@
         {% block head %}
             <meta charset="{{ registry().get('flextype.settings.charset')|lower }}">
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-            <meta name="description" content="{% if entry.description %}{{ entry.description }}{% else %}{{ registry().get('plugins.site.settings.description') }}{% endif %}">
-            <meta name="keywords" content="{% if entry.keywords %}{{ entry.keywords }}{% else %}{{ registry().get('plugins.site.settings.keywords') }}{% endif %}">
-            <meta name="robots" content="{% if entry.robots %}{{ entry.robots }}{% else %}{{ registry().get('plugins.site.settings.robots') }}{% endif %}">
+            <meta name="description" content="{% if description %}{{ description }}{% else %}{{ registry().get('plugins.site.settings.description') }}{% endif %}">
+            <meta name="keywords" content="{% if keywords %}{{ keywords }}{% else %}{{ registry().get('plugins.site.settings.keywords') }}{% endif %}">
+            <meta name="robots" content="{% if robots %}{{ robots }}{% else %}{{ registry().get('plugins.site.settings.robots') }}{% endif %}">
             <meta name="generator" content="Powered by Flextype"/>
 
             {% do flextype.emitter.emit('onLayoutMeta') %}
 
             <title>
-                {% if entry.title %}{{ entry.title|e('html') }} | {% endif %}
+                {% if title %}{{ title|e('html') }} | {% endif %}
                 {{ registry().get('plugins.site.settings.title')|e('html') }}
             </title>
 
@@ -42,7 +42,7 @@
             <ul class="flex ml-auto">
                 {% for item in entries().fetch('', {'collection': true}).sortByAsc('menu.order') %}
                     {% if item.menu.title %}
-                        <li class="{% if item.menu.url in entry.id %}active{% endif %}">
+                        <li class="{% if item.menu.url in id %}active{% endif %}">
                             <a class="{{ loop.last ? '' : 'px-6' }}" href="{{ getBaseUrl() }}/{{ item.menu.url }}">{{ item.menu.title }}</a>
                         </li>
                     {% endif %}

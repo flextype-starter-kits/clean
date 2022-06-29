@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="lg:px-32">
-    <h2 class="text-5xl text-center mb-10 font-bold">{{ entry.title }}</h2>
-    {{ entry.content|markdown|raw }}
+    <h2 class="text-5xl text-center mb-10 font-bold">{{ title }}</h2>
+    {{ content|markdown|raw }}
 </div>
 {% endblock %}

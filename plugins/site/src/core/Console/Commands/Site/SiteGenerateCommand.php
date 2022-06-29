@@ -16,6 +16,7 @@ declare(strict_types=1);
 
 namespace Flextype\Plugin\Site\Console\Commands\Site;
 
+use Flextype\Plugin\Site\Site;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -41,7 +42,10 @@ class SiteGenerateCommand extends Command
 
         $staticSitePathMessage = registry()->get('plugins.site.settings.static.site_path');
 
-        $site = [];
+        // Site items.
+        $items = [];
+
+        $site = new Site();
 
         $elapsedTimeStartPoint = microtime(true);
 
@@ -72,21 +76,21 @@ class SiteGenerateCommand extends Command
             }
 
             // Add entry to site
-            $site[] = $entry;
+            $items[] = $entry;
         }
 
         // Additions
         $additions = (array) registry()->get('plugins.site.settings.static.additions');
         foreach ($additions as $addition) {
-            $site[] = $addition;
+            $items[] = $addition;
         }
 
         // Set entry to the SitemapController class property $sitemap
-        registry()->set('plugins.site.static.entries', $site);
+        registry()->set('plugins.site.static.entries', $items);
 
         // Run event onSitemapAfterInitialized
         emitter()->emit('onStaticSiteAfterInitialized');
-        
+
         // Start site generation process...
         $output->write(
             renderToString(
@@ -95,7 +99,18 @@ class SiteGenerateCommand extends Command
             )
         );
 
-
+        // Clear cache.
+        if (filesystem()->directory(PATH_TMP)->exists()) {
+            filesystem()->directory(PATH_TMP)->delete();
+            
+            $output->write(
+                renderToString(
+                    div('[b]Success[/b]: Cache cleared successfully.', 
+                        'color-success px-2')
+                )
+            );    
+        }
+        
         // Create folder for static site.
         if (filesystem()->directory($staticSitePath)->exists()) {
             filesystem()->directory($staticSitePath)->delete();
@@ -124,7 +139,7 @@ class SiteGenerateCommand extends Command
         );
         
         // Iterate through the pages.
-        foreach($site as $page) {
+        foreach(registry()->get('plugins.site.static.entries') as $page) {
 
             // Create page folder.
             filesystem()->directory($staticSitePath . '/' . $page['id'])->ensureExists(0755, true);
@@ -140,7 +155,7 @@ class SiteGenerateCommand extends Command
                 return Command::FAILURE;
             }
 
-            $renderedPage = $this->renderPage($page);
+            $renderedPage = $site->render($page);
 
             // Save rendered page.
             filesystem()->file($staticSitePath . '/' . $page['id'] . '/index.html')->put($renderedPage);
@@ -165,7 +180,7 @@ class SiteGenerateCommand extends Command
         }
 
         // Create home page
-        filesystem()->file($staticSitePath . '/index.html')->put($this->renderPage(entries()->fetch(registry()->get('plugins.site.settings.entries.main'))));
+        filesystem()->file($staticSitePath . '/index.html')->put($site->render(entries()->fetch(registry()->get('plugins.site.settings.entries.main'))->toArray()));
 
         if (! filesystem()->file($staticSitePath . '/index.html')->exists()) {
             $output->write(
@@ -186,19 +201,19 @@ class SiteGenerateCommand extends Command
         );
 
         // Proceed assets.
-        if (filesystem()->directory($staticSitePath . '/' . PROJECT_NAME . '/assets')->exists()) {
+        if (filesystem()->directory(PATH_PROJECT . '/assets')->exists()) {
             filesystem()->directory($staticSitePath . '/' . PROJECT_NAME . '/assets')->ensureExists(0755, true);
             filesystem()->directory(PATH_PROJECT . '/assets')->copy($staticSitePath . '/' . PROJECT_NAME . '/assets');
             filesystem()->file($staticSitePath . '/' . PROJECT_NAME . '/index.html')->put('');
 
             // Remove ignored assets from the static site.
             foreach (registry()->get('plugins.site.settings.static.ignore.assets') as $item) {
-                if (filesystem()->directory(PATH_PROJECT . '/assets/' . $item)->exists()) {
-                    filesystem()->directory(PATH_PROJECT . '/assets/' . $item)->delete();
+                if (filesystem()->directory($staticSitePath . '/' . PROJECT_NAME . '/assets/' . $item)->exists()) {
+                    filesystem()->directory($staticSitePath . '/' . PROJECT_NAME . '/assets/' . $item)->delete();
                 }
             }
 
-            if (! filesystem()->file(PATH_PROJECT . '/assets/')->exists()) {
+            if (! filesystem()->directory($staticSitePath . '/' . PROJECT_NAME . '/assets/')->exists()) {
                 $output->write(
                     renderToString(
                         div('[b]Failure[/b]: Assets wasn\'t created.', 
@@ -224,27 +239,5 @@ class SiteGenerateCommand extends Command
         );
         
         return Command::SUCCESS;
-    }
-
-    private function renderPage($page)
-    {
-        // Set template path for current page.
-        $template = isset($page['template']) ? $page['template'] : registry()->get('plugins.site.settings.templates.default');
-        $template = registry()->get('plugins.site.settings.templates.directory') . '/' . $template;
-
-        // Select template engine.
-        switch (registry()->get('plugins.site.settings.templates.engine')) {
-            case 'twig':
-                $renderedPage = twig()->fetch($template . '.'. registry()->get('plugins.site.settings.templates.extension'), ['entry' => $page]);
-                break;
-
-            case 'view':
-            default: 
-                View::setExtension(registry()->get('plugins.site.settings.templates.extension'));
-                $renderedPage = view($template)->fetch($template, ['entry' => $page]);
-                break;
-        }
-
-        return $renderedPage;
     }
 }
