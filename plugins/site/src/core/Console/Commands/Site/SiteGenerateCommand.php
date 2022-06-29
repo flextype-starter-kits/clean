@@ -30,15 +30,25 @@ class SiteGenerateCommand extends Command
     {
         $this->setName('site:generate');
         $this->setDescription('Generate site.');
+        $this->addOption('site-path', null, InputOption::VALUE_REQUIRED, 'Destination for generated static site files (without trailing and without starting slash)');
+        $this->addOption('site-url', null, InputOption::VALUE_REQUIRED, 'Site url (without trailing).');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $staticSitePath = ROOT_DIR . '/' . registry()->get('plugins.site.settings.static.site_path');
+        if ($input->getOption('site-path')) {
+            $staticSitePath = ROOT_DIR . '/' . $input->getOption('output');
+        } else {
+            $staticSitePath = ROOT_DIR . '/' . registry()->get('plugins.site.settings.static.site_path');
+        }
 
-        // Override the default base_url and base_path settings.
-        registry()->set('flextype.settings.base_url', registry()->get('plugins.site.settings.static.site_url'));
-        registry()->set('flextype.settings.base_path', '');
+        if ($input->getOption('site-url')) {
+            registry()->set('flextype.settings.base_url', $input->getOption('site-url'));
+            registry()->set('flextype.settings.base_path', '');
+        } else {
+            registry()->set('flextype.settings.base_url', registry()->get('plugins.site.settings.static.site_url'));
+            registry()->set('flextype.settings.base_path', '');
+        }
 
         $staticSitePathMessage = registry()->get('plugins.site.settings.static.site_path');
 
@@ -203,15 +213,17 @@ class SiteGenerateCommand extends Command
         // Proceed assets.
         if (filesystem()->directory(PATH_PROJECT . '/assets')->exists()) {
             filesystem()->directory($staticSitePath . '/' . PROJECT_NAME . '/assets')->ensureExists(0755, true);
-            filesystem()->directory(PATH_PROJECT . '/assets')->copy($staticSitePath . '/' . PROJECT_NAME . '/assets');
-            filesystem()->file($staticSitePath . '/' . PROJECT_NAME . '/index.html')->put('');
-
-            // Remove ignored assets from the static site.
-            foreach (registry()->get('plugins.site.settings.static.ignore.assets') as $item) {
-                if (filesystem()->directory($staticSitePath . '/' . PROJECT_NAME . '/assets/' . $item)->exists()) {
-                    filesystem()->directory($staticSitePath . '/' . PROJECT_NAME . '/assets/' . $item)->delete();
-                }
+            
+            $directories = [];
+            foreach (filesystem()->directory(PATH_PROJECT . '/assets')->directories() as $directory) {
+                $directories[] = strings($directory)->replace(PATH_PROJECT . '/assets/', '')->toString();
             }
+            
+            foreach ($directories as $directory) {
+                filesystem()->directory(PATH_PROJECT . '/assets/' . $directory)->copy($staticSitePath . '/' . PROJECT_NAME . '/assets/' . $directory);            
+            }
+
+            filesystem()->file($staticSitePath . '/' . PROJECT_NAME . '/index.html')->put('');
 
             if (! filesystem()->directory($staticSitePath . '/' . PROJECT_NAME . '/assets/')->exists()) {
                 $output->write(
