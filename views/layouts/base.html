@@ -4,17 +4,13 @@
         {% block head %}
             <meta charset="{{ registry().get('flextype.settings.charset')|lower }}">
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-            <meta name="description" content="{% if description %}{{ description }}{% else %}{{ registry().get('plugins.site.settings.description') }}{% endif %}">
-            <meta name="keywords" content="{% if keywords %}{{ keywords }}{% else %}{{ registry().get('plugins.site.settings.keywords') }}{% endif %}">
-            <meta name="robots" content="{% if robots %}{{ robots }}{% else %}{{ registry().get('plugins.site.settings.robots') }}{% endif %}">
+            <meta name="description" content="{% include 'views/partials/head/description.html' %}">
+            <meta name="keywords" content="{% include 'views/partials/head/keywords.html' %}">
+            <meta name="robots" content="{% include 'views/partials/head/robots.html' %}">
             <meta name="generator" content="Powered by Flextype"/>
-
             {% do flextype.emitter.emit('onLayoutMeta') %}
 
-            <title>
-                {% if title %}{{ title|e('html') }} | {% endif %}
-                {{ registry().get('plugins.site.settings.title')|e('html') }}
-            </title>
+            <title>{% include 'views/partials/head/title.html' %}</title>
 
             {# For development only #}
             {# <script src="https://cdn.tailwindcss.com"></script> #}
@@ -31,7 +27,7 @@
                 {% endfor %}
             {% endif %}
 
-            {% do emitter().emit('onLayoutHeader') %}
+            {% do emitter().emit('onLayoutHead') %}
         {% endblock %}
     </head>
     <body>
