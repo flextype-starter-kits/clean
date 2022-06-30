@@ -1,0 +1,8 @@
+# enabled: true or false to disable the plugin
+enabled: true
+
+# Feed plugin priority
+priority: 100
+
+# Feeds
+feeds: []
