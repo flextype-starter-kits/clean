@@ -36,3 +36,12 @@ feeds:
         format: json
         route: '/blog.json'
         template: 'plugins/feed/views/templates/feed.json.html'
+
+# Settings for static feeds generation
+static:
+
+  # Feeds path (without trailing and without starting slash)
+  feed_path: '_site'
+
+  # Site url (without trailing slash)
+  feed_url: ''

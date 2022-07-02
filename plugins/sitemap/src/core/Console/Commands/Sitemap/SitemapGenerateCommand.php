@@ -36,6 +36,8 @@ class SitemapGenerateCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
+        $elapsedTimeStartPoint = microtime(true);
+
         $result = Command::SUCCESS;
        
         $sitemapPath = $input->getOption('sitemap-path') ? $input->getOption('sitemap-path') : registry()->get('plugins.sitemap.settings.static.sitemap_path');
@@ -69,6 +71,12 @@ class SitemapGenerateCommand extends Command
             );
             $result = Command::FAILURE;
         }
+
+        $output->write(
+            renderToString(
+                div('Sitemap generated in [b]'. sprintf("%01.4f", microtime(true) - $elapsedTimeStartPoint) .'[/b] seconds.', 'px-2 pb-1')
+            )
+        );
 
         return $result;
     }

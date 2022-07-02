@@ -39,16 +39,16 @@ class CacheClearTwigTemplatesCommand extends Command
             if (filesystem()->directory($configPath)->delete()) {
                 $output->write(
                     renderToString(
-                        div('Success: Twig template were successfully cleared from the cache.', 
-                            'bg-success px-2 py-1')
+                        div('Twig template were successfully cleared from the cache.', 
+                            'color-success px-2 py-1')
                     )
                 );
                 $result = Command::SUCCESS;
             } else {
                 $output->write(
                     renderToString(
-                        div('Failure: Twig templates cache wasn\'t cleared.', 
-                            'bg-danger px-2 py-1')
+                        div('Twig templates cache wasn\'t cleared.', 
+                            'color-danger px-2 py-1')
                     )
                 );
                 $result = Command::FAILURE;
@@ -56,8 +56,8 @@ class CacheClearTwigTemplatesCommand extends Command
         } else {
             $output->write(
                 renderToString(
-                    div('Failure: Twig templates cache directory ' . $configPath . ' doesn\'t exist.', 
-                        'bg-danger px-2 py-1')
+                    div('Twig templates cache directory ' . $configPath . ' doesn\'t exist.', 
+                        'color-danger px-2 py-1')
                 )
             );
             $result = Command::FAILURE;
