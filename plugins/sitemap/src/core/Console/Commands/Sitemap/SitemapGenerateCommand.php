@@ -30,29 +30,41 @@ class SitemapGenerateCommand extends Command
     {
         $this->setName('sitemap:generate');
         $this->setDescription('Generate sitemap.');
+        $this->addOption('sitemap-path', null, InputOption::VALUE_REQUIRED, 'Destination for generated static sitemap file (without trailing and without starting slash)');
+        $this->addOption('site-url', null, InputOption::VALUE_REQUIRED, 'Sit url (without trailing slash).');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $result = Command::SUCCESS;
-        
-        filesystem()->directory(ROOT_DIR . '/' . registry()->get('plugins.sitemap.settings.static.sitemap_path'))->ensureExists(0755, true);
+       
+        $sitemapPath = $input->getOption('sitemap-path') ? $input->getOption('sitemap-path') : registry()->get('plugins.sitemap.settings.static.sitemap_path');
 
-        $saveResult = filesystem()->file(ROOT_DIR . '/' . registry()->get('plugins.sitemap.settings.static.sitemap_path') . '/sitemap.xml')->put((new Sitemap())->fetch());
+        $staticSitemapPath = ROOT_DIR . '/' . $sitemapPath;
+        
+        if ($input->getOption('site-url')) {
+            registry()->set('flextype.settings.base_url', $input->getOption('site-url'));
+            registry()->set('flextype.settings.base_path', '');
+        } else {
+            registry()->set('flextype.settings.base_url', registry()->get('plugins.sitemap.settings.static.site_url'));
+            registry()->set('flextype.settings.base_path', '');
+        }
+
+        $saveResult = filesystem()->file($staticSitemapPath . '/sitemap.xml')->put((new Sitemap())->fetch());
 
         if ($saveResult) {
             $output->write(
                 renderToString(
-                    div('Success: Sitemap successfully generated.', 
-                        'bg-success px-2 py-1')
+                    div('Sitemap ' . strings($sitemapPath . '/sitemap.xml')->reduceSlashes()->trim('/') . ' generated successfully.', 
+                        'color-success px-2 py-1')
                 )
             );
             $result = Command::SUCCESS;
         } else {
             $output->write(
                 renderToString(
-                    div('Failure: Sitemap was not found generated.', 
-                        'bg-danger px-2 py-1')
+                    div('Sitemap was not generated.', 
+                        'color-danger px-2 py-1')
                 )
             );
             $result = Command::FAILURE;

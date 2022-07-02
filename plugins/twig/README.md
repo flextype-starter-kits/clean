@@ -18,7 +18,7 @@ The following dependencies need to be downloaded and installed for Twig Plugin.
 
 1. Download & Install all required dependencies.
 2. Create new folder `project/plugins/twig`
-3. Download Sitemap Plugin and unzip plugin content to the folder `project/plugins/twig`
+3. Download [Twig Plugin](https://github.com/flextype-plugins/twig/releases) and unzip plugin content to the folder `project/plugins/twig`
 
 ## Resources
 * [Documentation](https://awilum.github.io/flextype/downloads/extend/plugins/twig)
