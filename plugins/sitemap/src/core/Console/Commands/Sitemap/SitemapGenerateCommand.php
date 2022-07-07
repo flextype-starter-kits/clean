@@ -23,6 +23,9 @@ use Symfony\Component\Console\Input\InputOption;
 use Flextype\Plugin\Sitemap\Sitemap;
 use function Thermage\div;
 use function Thermage\renderToString;
+use function Flextype\registry;
+use function Glowy\Filesystem\filesystem;
+use function Glowy\Strings\strings;
 
 class SitemapGenerateCommand extends Command
 {
@@ -36,13 +39,11 @@ class SitemapGenerateCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $elapsedTimeStartPoint = microtime(true);
-
         $result = Command::SUCCESS;
        
         $sitemapPath = $input->getOption('sitemap-path') ? $input->getOption('sitemap-path') : registry()->get('plugins.sitemap.settings.static.sitemap_path');
 
-        $staticSitemapPath = ROOT_DIR . '/' . $sitemapPath;
+        $staticSitemapPath = FLEXTYPE_ROOT_DIR . '/' . $sitemapPath;
         
         if ($input->getOption('site-url')) {
             registry()->set('flextype.settings.base_url', $input->getOption('site-url'));
@@ -71,12 +72,6 @@ class SitemapGenerateCommand extends Command
             );
             $result = Command::FAILURE;
         }
-
-        $output->write(
-            renderToString(
-                div('Sitemap generated in [b]'. sprintf("%01.4f", microtime(true) - $elapsedTimeStartPoint) .'[/b] seconds.', 'px-2 pb-1')
-            )
-        );
 
         return $result;
     }

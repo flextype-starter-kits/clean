@@ -18,6 +18,15 @@ namespace Flextype\Plugin\Twig\Extension;
 
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
+use function Flextype\urlFor;
+use function Flextype\fullUrlFor;
+use function Flextype\getBasePath;
+use function Flextype\getBaseUrl;
+use function Flextype\getCurrentUrl;
+use function Flextype\getAbsoluteUrl;
+use function Flextype\getUriString;
+use function Flextype\redirect;
+use function Flextype\getProjectUrl;
 
 class UrlTwigExtension extends AbstractExtension
 {
@@ -29,15 +38,15 @@ class UrlTwigExtension extends AbstractExtension
     public function getFunctions() : array
     {
         return [
-            new TwigFunction('urlFor', 'urlFor'),
-            new TwigFunction('fullUrlFor', 'fullUrlFor'),
-            new TwigFunction('getBasePath', 'getBasePath'),
-            new TwigFunction('getBaseUrl', 'getBaseUrl'),
-            new TwigFunction('getCurrentUrl', 'getCurrentUrl'),
-            new TwigFunction('getAbsoluteUrl', 'getAbsoluteUrl'),
-            new TwigFunction('getUriString', 'getUriString'),
-            new TwigFunction('redirect', 'redirect'),
-            new TwigFunction('getProjectUrl', 'getProjectUrl')
+            new TwigFunction('urlFor', '\Flextype\urlFor'),
+            new TwigFunction('fullUrlFor', '\Flextype\fullUrlFor'),
+            new TwigFunction('getBasePath', '\Flextype\getBasePath'),
+            new TwigFunction('getBaseUrl', '\Flextype\getBaseUrl'),
+            new TwigFunction('getCurrentUrl', '\Flextype\getCurrentUrl'),
+            new TwigFunction('getAbsoluteUrl', '\Flextype\getAbsoluteUrl'),
+            new TwigFunction('getUriString', '\Flextype\getUriString'),
+            new TwigFunction('redirect', '\Flextype\redirect'),
+            new TwigFunction('getProjectUrl', '\Flextype\getProjectUrl')
         ];
     }
 }

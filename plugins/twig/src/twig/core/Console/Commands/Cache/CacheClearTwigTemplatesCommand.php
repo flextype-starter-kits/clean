@@ -22,6 +22,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use function Thermage\div;
 use function Thermage\renderToString;
+use function Glowy\Filesystem\filesystem;
 
 class CacheClearTwigTemplatesCommand extends Command
 {
@@ -33,22 +34,22 @@ class CacheClearTwigTemplatesCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $configPath = PATH_TMP . '/twig';
+        $configPath = FLEXTYPE_PATH_TMP . '/twig';
 
         if (filesystem()->directory($configPath)->exists()) {
             if (filesystem()->directory($configPath)->delete()) {
                 $output->write(
                     renderToString(
-                        div('Twig template were successfully cleared from the cache.', 
-                            'color-success px-2 py-1')
+                        div('Success: Twig template were successfully cleared from the cache.', 
+                            'bg-success px-2 py-1')
                     )
                 );
                 $result = Command::SUCCESS;
             } else {
                 $output->write(
                     renderToString(
-                        div('Twig templates cache wasn\'t cleared.', 
-                            'color-danger px-2 py-1')
+                        div('Failure: Twig templates cache wasn\'t cleared.', 
+                            'bg-danger px-2 py-1')
                     )
                 );
                 $result = Command::FAILURE;
@@ -56,8 +57,8 @@ class CacheClearTwigTemplatesCommand extends Command
         } else {
             $output->write(
                 renderToString(
-                    div('Twig templates cache directory ' . $configPath . ' doesn\'t exist.', 
-                        'color-danger px-2 py-1')
+                    div('Failure: Twig templates cache directory ' . $configPath . ' doesn\'t exist.', 
+                        'bg-danger px-2 py-1')
                 )
             );
             $result = Command::FAILURE;

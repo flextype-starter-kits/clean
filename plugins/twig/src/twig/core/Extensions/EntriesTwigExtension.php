@@ -20,6 +20,7 @@ use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 use Glowy\Arrays\Arrays as Collection;
 use Glowy\Macroable\Macroable;
+use function Flextype\entries;
 
 class EntriesTwigExtension extends AbstractExtension
 {

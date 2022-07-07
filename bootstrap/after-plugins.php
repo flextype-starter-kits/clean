@@ -4,6 +4,12 @@
  * Anything that should be executed after plugins initialization.
  */
 
+use function Flextype\emitter;
+use function Flextype\entries;
+use function Flextype\registry;
+use function Flextype\collection;
+
+
 /**
  * Add pagination pages for static site generator. 
  */

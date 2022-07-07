@@ -6,6 +6,7 @@ namespace Flextype\Plugin\Sitemap;
 
 use Flextype\Plugin\Sitemap\Console\Commands\Sitemap\SitemapGenerateCommand;
 use function is_file;
+use function Flextype\console;
 
 /**
  * Ensure vendor libraries exist

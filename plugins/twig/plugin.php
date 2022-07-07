@@ -19,6 +19,13 @@ use Slim\Csrf\Guard;
 use Slim\Flash\Messages;
 use Twig\Extension\DebugExtension;
 use Twig\Extension\StringLoaderExtension;
+use function Flextype\console;
+use function Flextype\registry;
+use function Flextype\entries;
+use function Flextype\parsers;
+use function Flextype\flash;
+use function Flextype\container;
+use function Flextype\Plugin\Twig\twig;
 
 /**
  * Ensure vendor libraries exist
@@ -46,9 +53,9 @@ container()->set('flash', new Messages());
 container()->set('twig', function () {
 
     // Create Twig View
-    $twig = Twig::create(PATH_PROJECT,
+    $twig = Twig::create(FLEXTYPE_PATH_PROJECT,
                         ['auto_reload' => registry()->get('plugins.twig.settings.auto_reload'),
-                         'cache' => registry()->get('plugins.twig.settings.cache') ? PATH_TMP . '/twig' : false,
+                         'cache' => registry()->get('plugins.twig.settings.cache') ? FLEXTYPE_PATH_TMP . '/twig' : false,
                          'debug' => registry()->get('plugins.twig.settings.debug'),
                          'charset' => registry()->get('plugins.twig.settings.charset')]);
 
@@ -63,7 +70,7 @@ container()->set('twig', function () {
         $twigExtensionClassName = $twigExtension . 'TwigExtension';
         $twigExtensionClassNameWithNamespace = 'Flextype\\Plugin\\Twig\\Extension\\' . $twigExtension . 'TwigExtension';
 
-        if (file_exists(PATH_PROJECT . '/plugins/twig/src/twig/core/Extensions/' . $twigExtensionClassName . '.php')) {
+        if (file_exists(FLEXTYPE_PATH_PROJECT . '/plugins/twig/src/twig/core/Extensions/' . $twigExtensionClassName . '.php')) {
             $twig->addExtension(new $twigExtensionClassNameWithNamespace());
         }
     }

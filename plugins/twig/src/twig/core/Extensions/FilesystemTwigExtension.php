@@ -21,6 +21,7 @@ use Twig\Extension\GlobalsInterface;
 use Glowy\Macroable\Macroable;
 use Symfony\Component\Finder\Finder;
 use Twig\TwigFunction;
+use function Glowy\Filesystem\filesystem;
 
 class FilesystemTwigExtension extends AbstractExtension
 {

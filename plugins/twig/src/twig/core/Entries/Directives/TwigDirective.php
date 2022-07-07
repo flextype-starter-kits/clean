@@ -15,6 +15,11 @@ declare(strict_types=1);
  */
 
 use Glowy\Arrays\Arrays as Collection;
+use function Glowy\Strings\strings;
+use function Flextype\entries;
+use function Flextype\registry;
+use function Flextype\Plugin\twig;
+use function Flextype\emitter;
 
 // Directive: @twig
 emitter()->addListener('onEntriesFetchSingleField', static function (): void {

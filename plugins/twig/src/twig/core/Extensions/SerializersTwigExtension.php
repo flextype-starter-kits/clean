@@ -18,6 +18,7 @@ namespace Flextype\Plugin\Twig\Extension;
 
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
+use function Flextype\serializers;
 
 class SerializersTwigExtension extends AbstractExtension
 {
@@ -29,7 +30,7 @@ class SerializersTwigExtension extends AbstractExtension
     public function getFunctions() : array
     {
         return [
-            new TwigFunction('serializers', 'serializers')
+            new TwigFunction('serializers', '\Flextype\serializers')
         ];
     }
 }

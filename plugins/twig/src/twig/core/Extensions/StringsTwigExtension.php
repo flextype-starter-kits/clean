@@ -19,6 +19,7 @@ namespace Flextype\Plugin\Twig\Extension;
 use Glowy\Strings\Strings;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
+use function Glowy\Strings\strings;
 
 class StringsTwigExtension extends AbstractExtension
 {
@@ -30,7 +31,7 @@ class StringsTwigExtension extends AbstractExtension
     public function getFunctions() : array
     {
         return [
-            new TwigFunction('strings', 'strings'),
+            new TwigFunction('strings', '\Glowy\Strings\strings'),
         ];
     }
 }

@@ -21,6 +21,7 @@ use Symfony\Component\ExpressionLanguage\ExpressionFunctionProviderInterface;
 use Twig\Error\LoaderError;
 use Twig\Error\SyntaxError;
 use Glowy\Macroable\Macroable;
+use function Flextype\twig;
 
 class TwigExpression implements ExpressionFunctionProviderInterface
 {

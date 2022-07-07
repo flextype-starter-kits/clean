@@ -12,5 +12,7 @@ namespace Flextype;
  */
 
 use Flextype\Plugin\Sitemap\Controllers\SitemapController;
+use function Flextype\app;
+use function Flextype\registry;
 
 app()->get(registry()->get('plugins.sitemap.settings.route'), [SitemapController::class, 'index'])->setName('sitemap.index');

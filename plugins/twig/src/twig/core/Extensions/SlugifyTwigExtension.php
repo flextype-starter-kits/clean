@@ -18,6 +18,7 @@ namespace Flextype\Plugin\Twig\Extension;
 
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
+use function Flextype\slugify;
 
 class SlugifyTwigExtension extends AbstractExtension
 {
@@ -29,7 +30,7 @@ class SlugifyTwigExtension extends AbstractExtension
     public function getFunctions() : array
     {
         return [
-            new TwigFunction('slugify', 'slugify')
+            new TwigFunction('slugify', '\Flextype\slugify')
         ];
     }
 }

@@ -18,6 +18,7 @@ namespace Flextype\Plugin\Twig\Extension;
 
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
+use function Flextype\emitter;
 
 class EmitterTwigExtension extends AbstractExtension
 {
@@ -29,7 +30,7 @@ class EmitterTwigExtension extends AbstractExtension
     public function getFunctions() : array
     {
         return [
-            new TwigFunction('emitter', 'emitter')
+            new TwigFunction('emitter', '\Flextype\emitter')
         ];
     }
 }

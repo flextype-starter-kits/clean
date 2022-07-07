@@ -19,6 +19,7 @@ namespace Flextype\Plugin\Twig\Extension;
 use Twig\Extension\AbstractExtension;
 use Twig\Extension\GlobalsInterface;
 use Twig\TwigFunction;
+use function Flextype\csrf;
 
 class CsrfTwigExtension extends AbstractExtension
 {

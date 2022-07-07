@@ -4,14 +4,15 @@ description: Provide automatically generated XML sitemap.
 author:
   name: Sergey Romanenko
   email: awilum@msn.com
-  url: https://awilum.github.io/flextype
-homepage: https://github.com/flextype-plugins/sitemap
-documentation: https://github.com/flextype-plugins/sitemap
+  url: https://awilum.github.io
+homepage: https://awilum.github.io/flextype/downloads/extend/plugins/sitemap
+documentation: https://awilum.github.io/flextype/downloads/extend/plugins/sitemap
 changelog: https://github.com/flextype-plugins/sitemap/blob/master/CHANGELOG.md
 bugs: https://github.com/flextype-plugins/sitemap/issues
 icon:
-  name: map
-  set: bootstrap
+  name: map-marked-alt
+  set: fontawesome|solid
+category: seo
 license: MIT
 
 dependencies:

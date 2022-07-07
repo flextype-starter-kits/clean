@@ -19,10 +19,10 @@ namespace Flextype\Plugin\Twig\Parsers\Shortcodes;
 use Thunder\Shortcode\Shortcode\ShortcodeInterface;
 use Flextype\Entries\Entries;
 
-use function arrays;
-use function entries;
-use function parsers;
-use function registry;
+use function Flextype\entries;
+use function Flextype\parsers;
+use function Flextype\registry;
+use function Flextype\Plugin\twig;
 
 // Shortcode: (twig) Twig code here... (/twig)
 parsers()->shortcodes()->addHandler('twig', static function (ShortcodeInterface $s) {

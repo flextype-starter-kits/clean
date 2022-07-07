@@ -18,6 +18,7 @@ namespace Flextype\Plugin\Twig\Extension;
 
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
+use function Flextype\Twig\flash;
 
 class FlashTwigExtension extends AbstractExtension
 {
@@ -29,7 +30,7 @@ class FlashTwigExtension extends AbstractExtension
     public function getFunctions() : array
     {
         return [
-            new TwigFunction('flash', 'flash')
+            new TwigFunction('flash', '\Flextype\flash')
         ];
     }
 }

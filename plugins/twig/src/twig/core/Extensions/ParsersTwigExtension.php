@@ -18,6 +18,7 @@ namespace Flextype\Plugin\Twig\Extension;
 
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
+use function Flextype\parsers;
 
 class ParsersTwigExtension extends AbstractExtension
 {
@@ -29,7 +30,7 @@ class ParsersTwigExtension extends AbstractExtension
     public function getFunctions() : array
     {
         return [
-            new TwigFunction('parsers', 'parsers')
+            new TwigFunction('parsers', '\Flextype\parsers')
         ];
     }
 }

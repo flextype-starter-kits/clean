@@ -2,6 +2,10 @@
 
 declare(strict_types=1);
 
+namespace Flextype\Plugin\Twig;
+
+use function Flextype\container;
+
  /**
  * Flextype - Hybrid Content Management System with the freedom of a headless CMS 
  * and with the full functionality of a traditional CMS!

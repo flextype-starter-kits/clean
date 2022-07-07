@@ -18,6 +18,7 @@ namespace Flextype\Plugin\Twig\Extension;
 
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
+use function Flextype\cache;
 
 class CacheTwigExtension extends AbstractExtension
 {
@@ -29,7 +30,7 @@ class CacheTwigExtension extends AbstractExtension
     public function getFunctions() : array
     {
         return [
-            new TwigFunction('cache', 'cache')
+            new TwigFunction('cache', '\Flextype\cache')
         ];
     }
 }

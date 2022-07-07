@@ -3,6 +3,10 @@
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Flextype\Plugin\Site\Site;
+use function Flextype\app;
+use function Flextype\getUriString;
+use function Flextype\getBasePath;
+use function Glowy\Strings\strings;
 
 /**
  * Blog pages route.

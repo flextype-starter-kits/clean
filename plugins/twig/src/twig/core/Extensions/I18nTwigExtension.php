@@ -20,6 +20,7 @@ use Flextype\I18n;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 use Twig\TwigFilter;
+use function Flextype\__;
 
 class I18nTwigExtension extends AbstractExtension
 {
