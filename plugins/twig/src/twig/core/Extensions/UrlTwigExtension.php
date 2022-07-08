@@ -38,6 +38,7 @@ class UrlTwigExtension extends AbstractExtension
     public function getFunctions() : array
     {
         return [
+            new TwigFunction('url', '\Flextype\url'),
             new TwigFunction('urlFor', '\Flextype\urlFor'),
             new TwigFunction('fullUrlFor', '\Flextype\fullUrlFor'),
             new TwigFunction('getBasePath', '\Flextype\getBasePath'),
