@@ -1,3 +1,4 @@
+{% apply spaceless %}
 {% if seo.description %}
     {{ seo.description|e('html') }}
 {% else %}
@@ -7,3 +8,4 @@
         {{ registry().get('plugins.site.settings.description')|e('html') }}
     {% endif %}
 {% endif %}
+{% endapply %}

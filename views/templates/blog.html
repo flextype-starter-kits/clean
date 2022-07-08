@@ -33,7 +33,7 @@
 <div class="lg:px-32">
     {# blog-posts #}
     {% for post in blogPosts %}
-        <a href="{{ getBaseUrl() }}/{{ post.id }}" class="text-4xl border-b-black border-b-2 flex items-center py-4 hover:text-pink-500">
+        <a href="{{ url(post.id) }}" class="text-4xl border-b-black border-b-2 flex items-center py-4 hover:text-pink-500">
             <div>{{ post.title }}</div>
             <div class="ml-auto text-base">{{ post.published_at|date(flextype.registry.get('flextype.date_display_format')) }}</div>
         </a>
@@ -43,13 +43,15 @@
     {# blog-pagination #}
         <div class="text-center p-10">
             {% if (page - 1) > 0 %}
-                <a href="{{ getBaseUrl() }}/blog/pages/{{ page - 1 }}" class="hover:text-pink-500">&larr; Newer</a>
+                {% set newerPage = page - 1 %}
+                <a href="{{ url('blog/pages/' ~ newerPage) }}" class="hover:text-pink-500">&larr; Newer</a>
             {% endif %}
             {% if blogPostsPages is not null and blogPostsPages > 1 %}
                 <span class="px-2">[</span><span class="px-1">{{ page }}</span> / <span class="px-1">{{ blogPostsPages }}</span><span class="px-2">]</span>
             {% endif %}
             {% if (page) < blogPostsPages %}
-                <a href="{{ getBaseUrl() }}/blog/pages/{{ page + 1 }}" class="hover:text-pink-500">Older &rarr;</a>
+                {% set olderPage = page + 1 %}
+                <a href="{{ url('blog/pages/' ~ olderPage) }}" class="hover:text-pink-500">Older &rarr;</a>
             {% endif %}
         </div>
     {# /blog-pagination #}
