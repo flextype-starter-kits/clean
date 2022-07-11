@@ -1,5 +1,5 @@
 <a name="3.0.0"></a>
-# [3.0.0](https://github.com/flextype-plugins/twig/compare/v2.1.0...v3.0.0) (2022-06-XX)
+# [3.0.0](https://github.com/flextype-plugins/twig/compare/v2.1.0...v3.0.0) (2022-07-11)
 
 ### Features
 
@@ -9,7 +9,7 @@
 
 * **core** Added new Twig shortcode.
 
-* **core** Added new Twig direcive.
+* **core** Added new Twig directive.
 
 * **core** Added new Twig extensions:
   - I18n
@@ -32,6 +32,7 @@
   - Cache
   - Image
   - Url
+  - Math
 
 * **core** Updated and removed unused code.
 

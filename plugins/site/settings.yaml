@@ -66,7 +66,7 @@ minify:
   html:
 
     # enable HTML Compressor and Minifier
-    enabled: true
+    enabled: false
 
     # optimize html via "HtmlDomParser()"
     optimize_via_dom_parser: false
@@ -144,7 +144,7 @@ minify:
 static:
 
   # Destination for generated static site files (without trailing and without starting slash)
-  site_path: '_site'
+  path: '_site'
 
   # Site url (without trailing slash)
   site_url: ''

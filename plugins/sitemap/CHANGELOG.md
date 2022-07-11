@@ -1,5 +1,5 @@
 <a name="3.0.0"></a>
-# [3.0.0](https://github.com/flextype-plugins/sitemap/compare/v2.10.0...v3.0.0) (2022-06-xx)
+# [3.0.0](https://github.com/flextype-plugins/sitemap/compare/v2.10.0...v3.0.0) (2022-07-11)
 
 ### Features
 

@@ -33,7 +33,7 @@ class SitemapGenerateCommand extends Command
     {
         $this->setName('sitemap:generate');
         $this->setDescription('Generate sitemap.');
-        $this->addOption('sitemap-path', null, InputOption::VALUE_REQUIRED, 'Destination for generated static sitemap file (without trailing and without starting slash)');
+        $this->addOption('path', null, InputOption::VALUE_REQUIRED, 'Destination for generated static sitemap file (without trailing and without starting slash)');
         $this->addOption('site-url', null, InputOption::VALUE_REQUIRED, 'Sit url (without trailing slash).');
     }
 
@@ -41,7 +41,7 @@ class SitemapGenerateCommand extends Command
     {
         $result = Command::SUCCESS;
        
-        $sitemapPath = $input->getOption('sitemap-path') ? $input->getOption('sitemap-path') : registry()->get('plugins.sitemap.settings.static.sitemap_path');
+        $sitemapPath = $input->getOption('path') ? $input->getOption('path') : registry()->get('plugins.sitemap.settings.static.path');
 
         $staticSitemapPath = FLEXTYPE_ROOT_DIR . '/' . $sitemapPath;
         
