@@ -63,9 +63,9 @@ redirects: []
 static:
 
   # Destination for generated static site files (without trailing and without starting slash)
-  site_path: '_site'
+  path: '_site'
 
-  # Site url (without trailing)
+  # Site url (without trailing slash)
   site_url: ''
 
   # Ignore lists (without trailing and without starting slash)
