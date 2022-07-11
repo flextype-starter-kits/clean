@@ -33,7 +33,7 @@ The following dependencies need to be downloaded and installed for Clean Starter
 3. Download [Clean Starter Kit](https://github.com/flextype-starter-kits/clean/releases) and unzip plugin content to the folder `project`
 
 ## Resources
-* [Documentation](https://awilum.github.io/flextype/downloads/extend/plugins/site)
+* [Documentation](https://awilum.github.io/flextype/downloads/extend/starter-kits/clean)
 
 ## License
 [The MIT License (MIT)](https://github.com/flextype-starter-kits/clean/blob/master/LICENSE.txt)
