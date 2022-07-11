@@ -25,12 +25,15 @@ The following dependencies need to be downloaded and installed for Clean Starter
 | Item | Version | Download |
 |---|---|---|
 | [flextype](https://github.com/flextype/flextype) | ^1.0.0-alpha.1 | [download](https://github.com/flextype/flextype/releases) |
+| [site](https://github.com/flextype-plugins/site) | ^2.0.0 | [download](https://github.com/flextype-plugins/site/releases) |
+| [feed](https://github.com/flextype-plugins/feed) | ^2.0.0 | [download](https://github.com/flextype-plugins/feed/releases) |
+| [sitemap](https://github.com/flextype-plugins/sitemap) | ^3.0.0 | [download](https://github.com/flextype-plugins/sitemap/releases) |
+| [twig](https://github.com/flextype-plugins/twig) | ^3.0.0 | [download](https://github.com/flextype-plugins/twig/releases) |
 
 ## Installation
 
-1. Download & Install all required [dependencies](https://github.com/flextype-starter-kits/clean#dependencies).
-2. Create new folder `project`
-3. Download [Clean Starter Kit](https://github.com/flextype-starter-kits/clean/releases) and unzip plugin content to the folder `project`
+1. Create new folder `project`.
+2. Download [Clean Starter Kit](https://github.com/flextype-starter-kits/clean/releases) and unzip starter kit content to the folder `project`
 
 ## Resources
 * [Documentation](https://awilum.github.io/flextype/downloads/extend/starter-kits/clean)
