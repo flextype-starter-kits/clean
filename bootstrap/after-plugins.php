@@ -24,5 +24,5 @@ emitter()->addListener('onStaticSiteAfterInitialized', static function (): void 
         $items[] = ['title' => 'Page ' . $i, 'template' => 'blog', 'id' => 'blog/pages/' . $i, 'page' => $i];
     }
 
-    registry()->set('plugins.site.static.entries', collection(registry()->get('plugins.site.static.entries'))->merge($items));
+    registry()->set('plugins.site.settings.static.entries', collection(registry()->get('plugins.site.settings.static.entries'))->merge($items));
 });
