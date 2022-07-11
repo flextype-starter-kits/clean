@@ -6,6 +6,7 @@ node_modules
 package-lock.json
 assets/dist/
 
+
 # OS Generated
 .DS_Store*
 ehthumbs.db
