@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="{{ registry().get('flextype.settings.locale') }}">
+    <head>
+        {% block head %}
+            <meta charset="{{ registry().get('flextype.settings.charset')|lower }}">
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+            <meta name="description" content="{% include 'views/partials/head/description.html' %}">
+            <meta name="keywords" content="{% include 'views/partials/head/keywords.html' %}">
+            <meta name="robots" content="{% include 'views/partials/head/robots.html' %}">
+            <meta name="generator" content="Powered by Flextype"/>
+            {% do flextype.emitter.emit('onLayoutMeta') %}
+
+            <title>{% include 'views/partials/head/title.html' %}</title>
+
+            {# For development only #}
+            {# <script src="https://cdn.tailwindcss.com"></script> #}
+
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500;600;800&display=swap" rel="stylesheet">
+    
+            {% do registry().set('assets.site.css.styles', url('/assets/dist/css/styles.css', 'project')) %}
+
+            {% if registry().has('assets.site.css') %}
+                {% for css in registry().get('assets.site.css') %}
+                    <link href="{{ css }}" rel="stylesheet">
+                {% endfor %}
+            {% endif %}
+
+            {% do emitter().emit('onLayoutHead') %}
+        {% endblock %}
+    </head>
+    <body>
+        <nav class="container flex mx-auto w-[1200px] py-10 font-medium">
+            <div class="flex">
+                <a href="{{ url() }}" class="font-semibold hover:text-pink-500">{{ registry().get('plugins.site.settings.title')|e('html') }}</a>
+            </div>
+            <ul class="flex ml-auto">
+                {% for item in entries().fetch('', {'collection': true}).sortByAsc('menu.order') %}
+                    {% if item.menu.title %}
+                        <li class="{% if item.menu.url in id %}active{% endif %}">
+                            <a class="{{ loop.last ? '' : 'px-6' }} hover:text-pink-500" href="{{ url(item.menu.url) }}">{{ item.menu.title }}</a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </nav>
+
+        <main role="main" class="container mx-auto w-[1200px]">
+            <section id="content" class="pt-5">
+                {% block content %}{% endblock %}
+            </section>
+            <footer class="flex py-20">
+                {% block footer %}
+                    <div class="w-6/12 text-left">
+                        <a href="https://twitter.com/@_flextype" target="_blank" class="hover:text-pink-500">Twitter</a>
+                    </div>
+                    <div class="w-6/12 text-right"> 
+                        <a href="https://awilum.github.io/flextype" target="_blank" class="hover:text-pink-500">Powered by Flextype</a>
+                    </div>
+                {% endblock %}
+            </footer>
+        </main>
+
+        {% if registry().has('assets.site.js') %}
+            {% for js in registry().get('assets.site.js') %}
+                {% if js %}
+                    <script type="text/javascript" src="{{ js }}"></script>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+
+        {% do flextype.emitter.emit('onLayoutTail') %}
+    </body>
+</html>

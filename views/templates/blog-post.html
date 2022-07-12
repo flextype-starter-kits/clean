@@ -1,0 +1,32 @@
+{% extends 'views/layouts/base.html' %}
+
+{% block content %}
+{# Get blog collection #}
+{% set blogCollectionCacheID = strings('blog-collection-' ~ 'blog' ~ id).hash().toString() %}
+{% if cache().has(blogCollectionCacheID) %}
+    {% set blog = cache().get(blogCollectionCacheID) %}
+{% else %}
+    {% set blog = entries().fetch('blog', {'collection': true}).onlyFromCollection(['published_at', 'slug']).sortByDesc('published_at') %}
+    {% do cache().set(blogCollectionCacheID, blog) %}
+{% endif %}
+
+{% set postDate = published_at|date(flextype.registry.get('flextype.date_display_format')) %}
+{% set olderPost = collection(blog).whereOlder('published_at', postDate).first()['slug'] %}
+{% set newerPost = collection(blog).whereNewer('published_at', postDate).last()['slug'] %}
+<div class="lg:px-32">
+    <h2 class="text-5xl text-center mb-2 font-bold">{{ title }}</h2>
+    <div class="'text-normal text-center mb-14">{{ postDate }}</div>
+    {{ content|markdown|raw }}
+    <div class="border-t-black border-t-2 py-8 mt-10 flex text-center">
+        <div class="w-4/12">
+            {% if (olderPost) %}<a href="{{ url('blog/' ~ olderPost) }}" class="px-16 hover:text-pink-500">&larr; Older</a>{% endif %}
+        </div>
+        <div class="w-4/12">
+            <a href="{{ url() }}" class="px-16 hover:text-pink-500">Back to articles</a>
+        </div>
+        <div class="w-4/12">
+            {% if (newerPost) %}<a href="{{ url('blog/' ~ newerPost) }}" class="px-16 hover:text-pink-500">Newer &rarr;</a>{% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

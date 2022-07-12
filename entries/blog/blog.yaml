@@ -1,0 +1,8 @@
+title: Blog
+template: blog
+posts_limit: 5
+menu:
+  title: Blog
+  url: "(field:id)"
+  target: "_self"
+  order: 1

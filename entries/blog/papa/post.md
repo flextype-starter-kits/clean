@@ -1,0 +1,16 @@
+---
+title: "Papa"
+template: blog-post
+visibility: visible
+published_at: '06-05-2022 09:46'
+---
+
+Continuing from The Massacre at Hawkins Lab, a young Eleven watches as the gateway to the Upside Down closes itself up before Dr. Brenner enters the room. Assuming Eleven was responsible, he angrily and frightfully scorns her. As Eleven furiously stares at Brenner, she grows weary after her fight with One and succumbs to exhaustion.
+
+<br>
+
+Back on Nancy’s end, she gets a glimpse that not only was Henry Creel the demon that committed the Creel murders, she discovers that Henry was Dr. Brenner’s first test subject. Attempting to escape Vecna’s curse, she ends up in Hawkin’s lab at the time when One murdered all the other numbered children and staff. Trying to break Vecna’s curse, Robin and the others frantically look for a song to break Nancy out of her trance (albeit most of what Eddie listens to is heavy metal). Running to a boarded-up door, Nancy tries to escape as Vecna asks her to see where he is going. Tearing down the barricade, Nancy ends up where she started with Dr. Brenner and the room turns pitch black. After the room illuminates, Nancy gets strapped into a chair with tentacles as Vecna slowly approaches. With his giant hand forward, Vecna tells Nancy to tell Eleven what she sees. Opening his hand outwards, Nancy gets a premonition of possible events to come in which several gates stitch themselves together and rupture Hawkins as a grandfather clock chimes in the background. Upon receiving this horrifying vision, Nancy awakens from her trance unharmed as Steve comforts her.
+
+<br>
+
+Back in Kamchatka, the Demogorgon is running rampant in the prisoner den. Due to Joyce’s haphazard button pressing, the power has gone down, numerous prison cells and gates are open and the electric fencing is deactivated. As the Russian guard leader demands for the power to be back on, Murray holds a controls operator at gunpoint to defuse the situation, Antonov is demanding the scientists for a safe escape route and Joyce gives Hopper some intel on the aftermath of his ‘death’ and how Eleven is doing. Murray interrupts their exchange with the fact that the Demogorgon can climb as it makes way out of the prisoner den. Scared, the Russian guards open fire on the Demogorgon (despite being ordered not to) whilst there is a monstrous trill coming from the upper floor of the controls room. As the guards get ravaged by the Demogorgon, Hopper goes to investigate the trills to discover a Demodog pinned to a table but with its chest cavity sliced open. After promptly shooting it dead, Hopper discovers that the adjacent room contains not only several motionless Demogorgons and Demodogs enclosed in a vat of liquid, a containment nearby has what appears to be a fragment of the Mind Flayer himself restlessly zooming around in its containment. As the others reel from this unexpected discovery, Antonov discovers a potential duct that may or may not lead out of the prison. Despite the unlikely odds, Hopper and the others make their way down.

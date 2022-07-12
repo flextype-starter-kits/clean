@@ -1,0 +1,59 @@
+{% extends 'views/layouts/base.html' %}
+
+{% block content %}
+
+{% set blogID = 'blog' %}
+{% set blogPostsLimit = entries().fetch(blogID).get('posts_limit') %}
+
+{% set blogCollectionCacheID = strings  ('blog-collection-' ~ blogID ~ page).hash().toString() %}
+{% if cache().has(blogCollectionCacheID) %}
+    {% set blog = cache().get(blogCollectionCacheID) %}
+{% else %}
+    {% set blog = entries().fetch(blogID, {'collection': true}).exceptFromCollection(['content']) %}
+    {% do cache().set(blogCollectionCacheID, blog) %}
+{% endif %}
+{% set blogPostData = entries().fetch(blogID) %}
+{% set blogPostsLength = blog.copy().where('visibility', 'nin', ['draft', 'hidden']).count() %}
+{% set blogPostsPages = (blogPostsLength / blogPostsLimit)|round(0, 'ceil') %}
+
+{% if page < 1 %}
+    {% set page = 1 %}
+{% elseif page > blogPostsPages %}
+    {% set page = blogPostsPages %}
+{% endif %}
+
+{% set blogPostsOffset = (page - 1) * blogPostsLimit %}
+{% if blogPostsOffset < 0 %}{% set blogPostsOffset = 0 %}{% endif %}
+
+{% set blogPosts = blog.copy()
+                        .where('visibility', 'nin', ['draft', 'hidden'])
+                        .sortBy('published_at', 'DESC')
+                        .slice(blogPostsOffset, blogPostsLimit) %}
+
+<div class="lg:px-32">
+    {# blog-posts #}
+    {% for post in blogPosts %}
+        <a href="{{ url(post.id) }}" class="text-4xl border-b-black border-b-2 flex items-center py-4 hover:text-pink-500">
+            <div>{{ post.title }}</div>
+            <div class="ml-auto text-base">{{ post.published_at|date(flextype.registry.get('flextype.date_display_format')) }}</div>
+        </a>
+    {% endfor %}
+    {# /blog-posts #}
+
+    {# blog-pagination #}
+        <div class="text-center p-10">
+            {% if (page - 1) > 0 %}
+                {% set newerPage = page - 1 %}
+                <a href="{{ url('blog/pages/' ~ newerPage) }}" class="hover:text-pink-500">&larr; Newer</a>
+            {% endif %}
+            {% if blogPostsPages is not null and blogPostsPages > 1 %}
+                <span class="px-2">[</span><span class="px-1">{{ page }}</span> / <span class="px-1">{{ blogPostsPages }}</span><span class="px-2">]</span>
+            {% endif %}
+            {% if (page) < blogPostsPages %}
+                {% set olderPage = page + 1 %}
+                <a href="{{ url('blog/pages/' ~ olderPage) }}" class="hover:text-pink-500">Older &rarr;</a>
+            {% endif %}
+        </div>
+    {# /blog-pagination #}
+</div>
+{% endblock %}

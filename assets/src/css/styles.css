@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        font-family: 'Maven Pro', monospace!important;
+    }
+
+    p {
+        margin-bottom: 20px!important;
+    }
+}

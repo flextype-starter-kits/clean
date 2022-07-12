@@ -1,0 +1,47 @@
+# enabled: true or false to disable the plugin
+enabled: true
+
+# Feed plugin priority
+priority: 100
+
+# Feeds
+feeds:
+  blog-rss:
+    id: blog
+    options:
+      collection: true
+      feed:
+        title: Blog
+        description: Blog description
+        format: rss
+        route: '/blog.rss'
+        template: 'plugins/feed/views/templates/feed.rss.html'
+  blog-atom:
+    id: blog
+    options:
+      collection: true
+      feed:
+        title: Blog
+        description: Blog description
+        format: json
+        route: '/blog.atom'
+        template: 'plugins/feed/views/templates/feed.atom.html'
+  blog-json:
+    id: blog
+    options:
+      collection: true
+      feed:
+        title: Blog
+        description: Blog description
+        format: json
+        route: '/blog.json'
+        template: 'plugins/feed/views/templates/feed.json.html'
+
+# Settings for static feeds generation
+static:
+
+  # Feeds path (without trailing and without starting slash)
+  path: '_site'
+
+  # Site url (without trailing slash)
+  site_url: ''

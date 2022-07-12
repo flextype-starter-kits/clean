@@ -1,0 +1,11 @@
+{% apply spaceless %}
+{% if seo.keywords %}
+    {{ seo.keywords|e('html') }}
+{% else %}
+    {% if keywords %}
+        {{ keywords|e('html') }}
+    {% else %} 
+        {{ registry().get('plugins.site.settings.keywords')|e('html') }}
+    {% endif %}
+{% endif %}
+{% endapply %}

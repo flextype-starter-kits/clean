@@ -1,0 +1,75 @@
+# enabled: true or false to disable the plugin
+enabled: true
+
+# Site plugin priority
+priority: 10000
+
+# The title of the website
+title: Clean
+
+# The description of the website
+description: Clean is a minimalist Starter Kit for a blog or personal site.
+
+# The keywords of the website
+keywords: flextype, php, cms, flat-file cms, flat cms, flatfile cms, html
+
+# The robots of the website
+robots: index, follow
+
+# The name and email address of the website author
+author:
+  email: ''
+  name: ''
+
+# Templates
+templates:
+  directory: "views/templates"
+  engine: twig
+  extension: html
+  default: default
+
+# Site static cache
+cache:
+  enabled: true
+
+# Trailing slash
+trailing_slash: false
+
+# The entries settings
+#
+# - main:                 Main entry
+# - error404.title:       Title to display on Error404 page
+# - error404.description: Description to display on Error404 page
+# - error404.content:     Content to display on Error404 page
+# - error404.template:    Template to use on Error404 page
+entries:
+  main: blog
+  error404:
+    title: Error 404
+    description: We're sorry but the page you are looking for doesn't appear to exist!
+    content: "<center>We're sorry but the page you are looking for doesn't appear to exist!</center>"
+    template: default
+
+# Redirects
+redirects: []
+  #- 
+    #from: /foo
+    #to: /bar
+    #to_route_name: home
+    #to_external: https://www.google.com
+    #status: 301
+
+# Settings for static site generation
+static:
+
+  # Destination for generated static site files (without trailing and without starting slash)
+  path: '_site'
+
+  # Site url (without trailing slash)
+  site_url: ''
+
+  # Ignore lists (without trailing and without starting slash)
+  ignore:
+    entries: []
+    assets: 
+      - src

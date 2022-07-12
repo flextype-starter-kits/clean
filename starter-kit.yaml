@@ -1,5 +1,5 @@
 name: Clean
-version: 1.0.0
+version: 1.0.1
 description: Clean is a minimalist Starter Kit for a blog or personal site.
 author:
   name: Sergey Romanenko
@@ -13,3 +13,7 @@ license: MIT
 
 dependencies:
   flextype: "^1.0.0-alpha.1"
+  site: "^2.0.0"
+  feed: "^2.0.0"
+  sitemap: "^3.0.0"
+  twig: "^3.0.0"
