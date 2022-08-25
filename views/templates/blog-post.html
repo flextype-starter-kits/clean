@@ -19,13 +19,13 @@
     {{ content|markdown|raw }}
     <div class="border-t-black border-t-2 py-8 mt-10 flex text-center">
         <div class="w-4/12">
-            {% if (olderPost) %}<a href="{{ url('blog/' ~ olderPost) }}" class="px-16 hover:text-pink-500">&larr; Older</a>{% endif %}
+            {% if (olderPost) %}<a href="{{ url('blog/' ~ olderPost) }}" class="lg:px-16 hover:text-pink-500">&larr; Older</a>{% endif %}
         </div>
         <div class="w-4/12">
-            <a href="{{ url() }}" class="px-16 hover:text-pink-500">Back to articles</a>
+            <a href="{{ url() }}" class="lg:px-16 hover:text-pink-500">Back to articles</a>
         </div>
         <div class="w-4/12">
-            {% if (newerPost) %}<a href="{{ url('blog/' ~ newerPost) }}" class="px-16 hover:text-pink-500">Newer &rarr;</a>{% endif %}
+            {% if (newerPost) %}<a href="{{ url('blog/' ~ newerPost) }}" class="lg:px-16 hover:text-pink-500">Newer &rarr;</a>{% endif %}
         </div>
     </div>
 </div>

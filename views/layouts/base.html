@@ -31,7 +31,7 @@
         {% endblock %}
     </head>
     <body>
-        <nav class="container flex mx-auto w-[1200px] py-10 font-medium">
+        <nav class="container flex mx-auto lg:w-[1200px] px-10 lg:px-0 py-10 font-medium">
             <div class="flex">
                 <a href="{{ url() }}" class="font-semibold hover:text-pink-500">{{ registry().get('plugins.site.settings.title')|e('html') }}</a>
             </div>
@@ -46,7 +46,7 @@
             </ul>
         </nav>
 
-        <main role="main" class="container mx-auto w-[1200px]">
+        <main role="main" class="container mx-auto lg:w-[1200px] px-10 lg:px-0">
             <section id="content" class="pt-5">
                 {% block content %}{% endblock %}
             </section>
