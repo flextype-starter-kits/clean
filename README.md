@@ -5,7 +5,7 @@
 <hr><br>
 
 <p align="center">
-<img src="https://img.shields.io/badge/license-MIT-blue.svg?label=License" alt="License MIT"> <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/flextype-starter-kits/clean?label=Stars"> <img alt="GitHub forks" src="https://img.shields.io/github/forks/flextype-starter-kits/clean?label=Forks"> <a href="https://hitsofcode.com"><img alt="Hits of Code" src="https://hitsofcode.com/github/flextype-starter-kits/clean?branch=1.x"></a> <a href="https://discord.gg/ewQkqgfBAc"><img src="https://img.shields.io/discord/423097982498635778.svg?logo=discord&label=Discord%20Chat" alt="Discord"></a>
+<img src="https://img.shields.io/badge/license-MIT-blue.svg?label=License" alt="License MIT"> <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/flextype-starter-kits/clean?label=Stars"> <img alt="GitHub forks" src="https://img.shields.io/github/forks/flextype-starter-kits/clean?label=Forks"> <a href="https://hitsofcode.com"><img alt="Hits of Code" src="https://hitsofcode.com/github/flextype-starter-kits/clean?branch=1.x"></a>
 </p>
 
 <br><br>
@@ -24,11 +24,11 @@ The following dependencies need to be downloaded and installed for Clean Starter
 
 | Item | Version | Download |
 |---|---|---|
-| [flextype](https://github.com/flextype/flextype) | ^1.0.0-alpha.1 | [download](https://github.com/flextype/flextype/releases) |
-| [site](https://github.com/flextype-plugins/site) | ^2.0.0 | [download](https://github.com/flextype-plugins/site/releases) |
-| [feed](https://github.com/flextype-plugins/feed) | ^2.0.0 | [download](https://github.com/flextype-plugins/feed/releases) |
-| [sitemap](https://github.com/flextype-plugins/sitemap) | ^3.0.0 | [download](https://github.com/flextype-plugins/sitemap/releases) |
-| [twig](https://github.com/flextype-plugins/twig) | ^3.0.0 | [download](https://github.com/flextype-plugins/twig/releases) |
+| [flextype](https://github.com/flextype/flextype) | ^1.0.0-alpha.2 | [download](https://github.com/flextype/flextype/releases) |
+| [site](https://github.com/flextype-plugins/site) | ^2.1.0 | [download](https://github.com/flextype-plugins/site/releases) |
+| [feed](https://github.com/flextype-plugins/feed) | ^2.1.0 | [download](https://github.com/flextype-plugins/feed/releases) |
+| [sitemap](https://github.com/flextype-plugins/sitemap) | ^3.1.0 | [download](https://github.com/flextype-plugins/sitemap/releases) |
+| [twig](https://github.com/flextype-plugins/twig) | ^3.2.0 | [download](https://github.com/flextype-plugins/twig/releases) |
 
 ## Installation
 
