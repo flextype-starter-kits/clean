@@ -23,7 +23,7 @@ base_url: ''
 
 # Application Base Path
 #
-# Define application base path (without trailing slash) if application located in subdirectory
+# Define application base path (without trailing and without starting slash) if application located in subdirectory
 base_path: ''
 
 # Valid date format
@@ -76,58 +76,11 @@ entries:
   directory: 'entries'
   cache:
     string: ""
-  vars:
-    debug: false
-  expressions:
-    actions:
-      enabled: true
-      class: "Flextype\\Entries\\Expressions\\ActionsExpression"
-    registry:
-      enabled: true
-      class: "Flextype\\Entries\\Expressions\\RegistryExpression"
-    entries:
-      enabled: true
-      class: "Flextype\\Entries\\Expressions\\EntriesExpression"
-    filesystem:
-      enabled: true
-      class: "Flextype\\Entries\\Expressions\\FilesystemExpression"
-    i18n:
-      enabled: true
-      class: "Flextype\\Entries\\Expressions\\I18nExpression"
-    serializers:
-      enabled: true
-      class: "Flextype\\Entries\\Expressions\\SerializersExpression"
-    parsers:
-      enabled: true
-      class: "Flextype\\Entries\\Expressions\\ParsersExpression"
-    slugify:
-      enabled: true
-      class: "Flextype\\Entries\\Expressions\\SlugifyExpression"
-    strings:
-      enabled: true
-      class: "Flextype\\Entries\\Expressions\\StringsExpression"
-    collection:
-      enabled: true
-      class: "Flextype\\Entries\\Expressions\\CollectionExpression"
-    csrf:
-      enabled: true
-      class: "Flextype\\Entries\\Expressions\\CsrfExpression"
-    var:
-      enabled: true
-      class: "Flextype\\Entries\\Expressions\\VarExpression"
-    field:
-      enabled: true
-      class: "Flextype\\Entries\\Expressions\\FieldExpression"
-    const:
-      enabled: true
-      class: "Flextype\\Entries\\Expressions\\ConstExpression"
   directives:
     expressions:
       enabled: true
       enabled_globally: true
       path: "src/flextype/core/Entries/Directives/ExpressionsDirective.php"
-      opening_tag: "[["
-      closing_tag: "]]"
     shortcodes:
       enabled: true
       enabled_globally: true
@@ -149,9 +102,6 @@ entries:
       path: "src/flextype/core/Entries/Directives/TypesDirective.php"
   macros:
     debug: false
-    vars:
-      enabled: true
-      path: "src/flextype/core/Entries/Macros/VarsMacros.php"
     php:
       enabled: false
       path: "src/flextype/core/Entries/Macros/PhpMacros.php"
@@ -167,6 +117,22 @@ entries:
         enabled: true
         type: array
   collections:
+    blog:
+      pattern: blog
+      filename: blog
+      extension: yaml
+      serializer: yaml
+      fields: 
+        _include: 
+          collection: default
+    blog_post:
+      pattern: blog/([a-zA-Z0-9_-]+)
+      filename: post
+      extension: md
+      serializer: frontmatter
+      fields: 
+        _include: 
+          collection: default
     default:
       filename: entry
       extension: md
@@ -202,22 +168,6 @@ entries:
         id:
           enabled: true
           path: "src/flextype/core/Entries/Fields/Default/IdField.php"
-    blog:
-      pattern: blog
-      filename: blog
-      extension: yaml
-      serializer: yaml
-      fields: 
-        _include: 
-          collection: default
-    blog_post:
-      pattern: blog/([a-zA-Z0-9_-]+)
-      filename: post
-      extension: md
-      serializer: frontmatter
-      fields: 
-        _include: 
-          collection: default
     tokens:
       pattern: tokens
       filename: token
@@ -326,17 +276,6 @@ cache:
       ssl_enabled: false
       ssl_verify: false
       default_ttl: 900
-    cookie:
-      aware_of_untrustable_data: false
-      limited_memory_by_object: 4096
-      default_ttl: 900
-    couchbase:
-      host: '127.0.0.1'
-      port: 8091
-      username: ''
-      password: ''
-      bucket_name: default
-      default_ttl: 900
     couchdb:
       database: 'flextype'
       path: '/'
@@ -349,8 +288,6 @@ cache:
       timeout: 10
       default_ttl: 900
     devnull: {}
-    devfalse: {}
-    devtrue: {}
     phparray:
       path: '/data'
       security_key: 'auto'
@@ -410,11 +347,6 @@ cache:
       timeout: 5
       database: 0
       opt_prefix: ''
-      default_ttl: 900
-    riak:
-      host: '127.0.0.1'
-      port: 8098
-      prefix: 'riak'
       default_ttl: 900
     sqlite:
       path: '/data'
@@ -663,6 +595,9 @@ parsers:
         path: "src/flextype/core/Parsers/Shortcodes/EntriesShortcode.php"
         fetch:
           enabled: true
+      date:
+        enabled: true
+        path: "src/flextype/core/Parsers/Shortcodes/DateShortcode.php"
       php:
         enabled: false
         path: "src/flextype/core/Parsers/Shortcodes/PhpShortcode.php"
@@ -715,6 +650,9 @@ parsers:
       field:
         enabled: true
         path: "src/flextype/core/Parsers/Shortcodes/FieldShortcode.php"  
+      fetch:
+        enabled: true
+        path: "src/flextype/core/Parsers/Shortcodes/FetchShortcode.php"
       calc:
         enabled: true
         path: "src/flextype/core/Parsers/Shortcodes/CalcShortcode.php"  
@@ -724,6 +662,91 @@ parsers:
       type:
         enabled: true
         path: "src/flextype/core/Parsers/Shortcodes/TypeShortcode.php" 
+  expressions:
+    cache:
+      enabled: true
+      string: ''
+    opening_variable_tag: "[["
+    closing_variable_tag: "]]"
+    opening_block_tag: "[%"
+    closing_block_tag: "%]"
+    opening_comment_tag: "[#"
+    closing_comment_tag: "#]"
+    expressions:
+      math:
+        enabled: true
+        class: "Flextype\\Parsers\\Expressions\\MathExpression"
+      date:
+        enabled: true
+        class: "Flextype\\Parsers\\Expressions\\DateExpression"
+      actions:
+        enabled: true
+        class: "Flextype\\Parsers\\Expressions\\ActionsExpression"
+      registry:
+        enabled: true
+        class: "Flextype\\Parsers\\Expressions\\RegistryExpression"
+      entries:
+        enabled: true
+        class: "Flextype\\Parsers\\Expressions\\EntriesExpression"
+        fetch:
+          enabled: true
+        has:
+          enabled: true
+        registry:
+          enabled: true
+        create:
+          enabled: false
+        move:
+          enabled: false
+        update:
+          enabled: false
+        delete:
+          enabled: false
+      fetch:
+        enabled: true
+        class: "Flextype\\Parsers\\Expressions\\FetchExpression"
+      filesystem:
+        enabled: true
+        class: "Flextype\\Parsers\\Expressions\\FilesystemExpression"
+      i18n:
+        enabled: true
+        class: "Flextype\\Parsers\\Expressions\\I18nExpression"
+      serializers:
+        enabled: true
+        class: "Flextype\\Parsers\\Expressions\\SerializersExpression"
+      parsers:
+        enabled: true
+        class: "Flextype\\Parsers\\Expressions\\ParsersExpression"
+      slugify:
+        enabled: true
+        class: "Flextype\\Parsers\\Expressions\\SlugifyExpression"
+      strings:
+        enabled: true
+        class: "Flextype\\Parsers\\Expressions\\StringsExpression"
+      collection:
+        enabled: true
+        class: "Flextype\\Parsers\\Expressions\\CollectionExpression"
+      csrf:
+        enabled: true
+        class: "Flextype\\Parsers\\Expressions\\CsrfExpression"
+      var:
+        enabled: true
+        class: "Flextype\\Parsers\\Expressions\\VarExpression"
+      field:
+        enabled: true
+        class: "Flextype\\Parsers\\Expressions\\FieldExpression"
+      const:
+        enabled: true
+        class: "Flextype\\Parsers\\Expressions\\ConstExpression"
+      url:
+        enabled: true
+        class: "Flextype\\Parsers\\Expressions\\UrlExpression"
+      when:
+        enabled: true
+        class: "Flextype\\Parsers\\Expressions\\WhenExpression"
+      unless:
+        enabled: true
+        class: "Flextype\\Parsers\\Expressions\\UnlessExpression"
 
 # CORS
 #
@@ -857,4 +880,10 @@ api:
   cache:
 
     # Set to true to enable Cache API
+    enabled: true
+
+  # Query API
+  query:
+
+    # Set to true to enable Query API
     enabled: true
