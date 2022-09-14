@@ -1,5 +1,5 @@
 <a name="1.1.0"></a>
-# [1.1.0](https://github.com/flextype-starter-kits/clean) (2022-09-13)
+# [1.1.0](https://github.com/flextype-starter-kits/clean) (2022-09-14)
 
 ### Features
 
